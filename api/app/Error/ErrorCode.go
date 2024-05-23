@@ -1,0 +1,20 @@
+package Error
+
+const (
+	NULL                       = 0
+	SYSTEM                     = 1
+	NOT_ALLOWED_TO_CREATE_APPS = 11
+	NOT_LOGGED_IN              = 12
+	CLIENT_INVALID_REQUEST     = 13
+	APP_NAME_IS_EMPTY          = 14
+	APP_CALLBACK_IS_EMPTY      = 15
+	USER_NOT_EXIST             = 16
+	APP_NOT_EXIST              = 17
+	VERIFICATION_CODE_INVALID  = 18
+	APP_NAME_ALREADY_EXISTS    = 19
+	OWNED_APPS_REACHED_LIMIT   = 20
+	APP_DESCRIPTION_TOO_LONG   = 21
+	APP_NAME_TOO_LONG          = 22
+	CALLBACK_TOO_LONG          = 23
+	AUTHORIZATION_INVALID      = 24
+)
