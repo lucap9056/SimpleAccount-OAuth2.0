@@ -1,0 +1,15 @@
+{
+    "main_API_source": "https://www.example:port",
+    "port": 80,
+    "logs_dir_path": "logs",
+    "allow_creating_new_apps": true,
+    "app_ownership_limits": 2,
+    "database": {
+        "source_name": "user:password@tcp(host:port)/Database",
+        "//": ""
+    },
+    "auths": {
+        "authorization_code_duration": 5,
+        "//": "^ Duration x Minute"
+    }
+}
