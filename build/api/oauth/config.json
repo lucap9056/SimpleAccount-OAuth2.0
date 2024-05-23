@@ -1,0 +1,15 @@
+{
+    "main_API_source": "http://simple_account_api:80",
+    "port": 80,
+    "logs_dir_path": "logs",
+    "allow_creating_new_apps": true,
+    "app_ownership_limits": 2,
+    "database": {
+        "source_name": "example_user:example_password@tcp(simple_account_mysql:3306)/example_db",
+        "//": ""
+    },
+    "auths": {
+        "authorization_code_duration": 5,
+        "//": "^ Duration x Minute"
+    }
+}
