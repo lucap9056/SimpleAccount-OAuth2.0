@@ -24,7 +24,40 @@ func New(config Config) (*API, error) {
 	connect.SetMaxIdleConns(10)
 	database.db = connect
 
+	if err := database.checkAndCreateTable(); err != nil {
+		return nil, err
+	}
+
 	return &database, nil
+}
+
+func (ctr *API) checkAndCreateTable() error {
+	var table string
+	err := ctr.db.QueryRow("SHOW TABLES LIKE 'ThirdApp'").Scan(&table)
+	if err != nil && err != sql.ErrNoRows {
+		return err
+	}
+
+	if table == "" {
+		_, err := ctr.db.Exec(`
+		CREATE TABLE ThirdApp (
+			id              CHAR(36),
+			name            VARCHAR(255)     NOT NULL,
+			client          INT             NOT NULL,
+			salt            VARCHAR(64)     NOT NULL          COMMENT 'secret salt',
+			hash            VARCHAR(64)     NOT NULL          COMMENT 'secret hash',
+			callback        VARCHAR(255)    NOT NULL,
+			description     TEXT            DEFAULT ''        COMMENT 'app description',
+			permissions     INT             NOT NULL,
+			PRIMARY KEY (id),
+			FOREIGN KEY (client) REFERENCES User(id)
+		)`)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 func (api *API) UUID() (string, error) {

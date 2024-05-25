@@ -1,22 +1,28 @@
 version: '3'
 services:
   simple_account_api:
-    image: ubuntu
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ./api/main:/data
     entrypoint: /data/main
     working_dir: /data
     networks:
       - simple_account_api_network
+      - mariadb_network
 
   simple_account_api_oauth:
-    image: ubuntu
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - ./api/ouath:/data
+      - ./api/oauth:/data
     entrypoint: /data/main
     working_dir: /data
     networks:
       - simple_account_api_network
+      - mariadb_network
 
   simple_account_nginx:
     image: nginx
@@ -32,18 +38,10 @@ services:
       - ./html:/usr/share/nginx/html
     networks:
       - simple_account_api_network
-  simple_account_mysql:
-    image: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: example_password
-      MYSQL_DATABASE: example_db
-      MYSQL_USER: example_user
-      MYSQL_PASSWORD: example_password
-    volumes:
-      - ./mysql:/var/lib/mysql
-    networks:
-      - simple_account_api_network
 
 networks:
   simple_account_api_network:
     name: simple_account_api_network
+  mariadb_network:
+    name: mariadb_network
+    external: true

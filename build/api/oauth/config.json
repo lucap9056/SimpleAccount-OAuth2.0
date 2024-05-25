@@ -1,5 +1,5 @@
 {
-    "main_API_source": "http://simple_account_api:80",
+    "main_API_source": "http://simple_account_api:81",
     "port": 80,
     "logs_dir_path": "logs",
     "allow_creating_new_apps": true,
