@@ -1,5 +1,5 @@
-SimpleAccount-OAuth2.0 是 SimpleAccount 的 OAuth2.0 擴充程式，
-新增此擴充，第三方應用可以透過 OAuth2.0 向 SimpleAccount 請求使用者資料。
+SimpleAccount-OAuth2.0 是 [SimpleAccount](https://github.com/lucap9056/SimpleAccount) 的 OAuth2.0 擴充程式，
+新增此擴充，第三方可以透過 OAuth2.0 向 SimpleAccount 請求使用者資料。
 ## 功能
 
 - 讓 SimpleAccount 支援 OAuth2.0 機制。
